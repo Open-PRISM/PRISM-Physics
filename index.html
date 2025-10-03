@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="">
+  <meta name="keywords" content="MathVista, Math Vista">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> PRISM-Physics: Causal DAG-Based Process Evaluation for Physics Reasoning</title>
+
+  <link rel="icon" href="./static/icon/prism.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="stylesheet" href="./static/css/leaderboard.css"> -->
+
+  <!-- <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bulma.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script> -->
+  <script type="text/javascript" src="static/js/sort-table.js" defer></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <!-- <script src="./static/js/explorer-index.js"></script> -->
+  <script src="./static/js/question_card.js"></script>
+
+  <!-- <script src="./static/js/leaderboard_testmini.js"></script>   -->
+  <script src="./data/results/output_folders.js" defer></script>
+  <script src="./data/results/model_scores.js" defer></script>
+
+  <script src="./visualizer/data/data_public.js" defer></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title is-bold">
+            <img src="static/icon/prism.png" style="width:1.5em;vertical-align: middle" alt="Logo"/>
+            <span class="mathvista" style="vertical-align: middle">PRISM-Physics</span>
+            </h1>
+          <h2 class="subtitle is-3 publication-subtitle">
+            PRISM-Physics: Causal DAG-Based Process Evaluation for Physics Reasoning
+            <!-- <br> -->
+            <!-- with GPT-4V, Bard, and Other Large Multimodal Models -->
+          </h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Wanjia Zhao*</a><sup style="color:#8C1515;">1</sup>,</span>
+            <span class="author-block">
+              <a href="">Qinwei Ma*</a><sup style="color:#671372;">2</sup>,</span>
+            <span class="author-block">
+              <a href="">Jingzhe Shi</a><sup style="color:#671372;">2</sup>,</span>
+            <span class="author-block">
+              <a href="https://eleanor-h.github.io/">Shirley Wu</a><sup style="color:#8C1515;">1</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/Nosiopd">Jiaqi Han</a><sup style="color:#8C1515;">1</sup>,</span>
+            <span class="author-block">
+              <a href="">Yijia Xiao</a><sup style="color:#2774AE;">3</sup>,</span>
+            <span class="author-block">
+              <a href="">Si-Yuan Chen</a><sup style="color:#ed1b34;">4</sup>,</span>
+            <span class="author-block">
+              <a href="">Xiao Luo</a><sup style="color:#c5050c;">5</sup>,</span>
+            <span class="author-block">
+              <a href="">Ludwig Schmidt</a><sup style="color:#8C1515;">1</sup>,</span>   
+            <span class="author-block">
+              <a href="">James Zou</a><sup style="color:#8C1515;">1</sup>,</span>  
+            </span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup style="color:#8C1515;">1</sup>Stanford University,</span>
+            <span class="author-block"><sup style="color:#671372;">2</sup>Tsinghua University,</span><br>
+            <span class="author-block"><sup style="color:#2774AE;">3</sup>UCLA,</span>
+            <span class="author-block"><sup style="color:#ed1b34;">4</sup>Harvard University</span>
+            <span class="author-block"><sup style="color: #c5050c;;">5</sup>University of Wisconsin-Madison </span><br>
+          </div>
+        
+         
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+
+              <span class="link-block">
+                <a href="https://open-prism.github.io/PRISM-Physics/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              
+              <!-- Dataset Link (GitHub). -->
+                            
+              <!-- TODO: Dataset Link (HuggingFace). -->
+              <span class="link-block">
+                <a href="https://open-prism.github.io/PRISM-Physics/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <p style="font-size:18px">🤗</p>
+                  </span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="#leaderboard"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <p style="font-size:18px">🏆</p>
+                  </span>
+                  <span>Leaderboard</span>
+                </a>
+              </span>
+
+
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <p style="font-size:18px">🚀</p>
+                  </span>
+                  <span>Challenge</span>
+                </a>
+              </span> -->
+
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <p style="font-size:18px">🌐</p>
+                  </span>
+                  <span>Twitter</span>
+                  </a>
+              </span>
+
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <p style="font-size:18px">🦋</p>
+                  </span>
+                  <span>Bluesky</span>
+                  </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Introduction</h2>
+        <div class="content has-text-justified">
+          <p>
+            We present <span class="mathvista">PRISM-Physics</span>, a process-level evaluation framework and benchmark for complex physics reasoning problems. Solutions are represented as directed acyclic graphs (DAGs) of formulas, explicitly encoding causal dependencies among intermediate steps to enable fine-grained, interpretable, and theoretically grounded scoring. 
+            We prove the optimality of the DAG representation and the corresponding scoring policy. Combining with a fully rule-based method for symbolic formula equivalence matching that we developed, we ensure consistent validation across diverse formulations without heuristic judgments. Results show that our evaluation framework is more aligned with human experts' scoring. 
+           Experiments on state-of-the-art LLMs reveal persistent reasoning failures in physics, while step-level scoring offers both diagnostic insight and rich signals for later training. By combining structural rigor, theoretical guarantees, and symbolic validation, \dataset provides a principled foundation for advancing process-level evaluation and guiding the development of models with deeper scientific reasoning capabilities.
+          </p>          
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</div>
+</section>
+
+
+
+<!-- leaderboard SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+
+  <h1 class="title is-1 mathvista" id="leaderboard">
+    <img src="static/icon/prism.png" style="width:1em;vertical-align: middle" alt="Logo"/>
+    <span class="mathvista" style="vertical-align: middle">Leaderboard on PRISM-Physics</span>
+  </h1>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-full-width has-text-centered"> -->
+        <div class="column is-four-fifths">
+        <div class="box m-5">
+          <div class="content has-text-centered">
+            <img src="static/images/leaderboard.png" alt="SeePhys" width="80%"/>
+            <p> Step-level Accuracy, Final-Answer Accuracy and response time across difficulty levels (Easy, Medium,
+                Hard, and Avg.) for evaluated models.
+          </div>
+        </div>
+      </div> 
+      </div>
+
+</section>
+
+
+<!-- DAG SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+
+  <h1 class="title is-1 mathvista" id="leaderboard">
+    <img src="static/icon/prism.png" style="width:1em;vertical-align: middle" alt="Logo"/>
+    <span class="mathvista" style="vertical-align: middle">PRISM-DAG</span>
+  </h1>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overview</h2>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/overall_dag_large.jpg" alt="SeePhys" width="100%"/>
+              <p> Overview of <b>PRISM-Physics</b>. <em>Left:</em> Statistics of <b>PRISM-Physics</b> hierarchical topics and difficulty level.<br> <em>Right:</em> A data example with the proposed DAG structure.
+            </div>
+          </div>
+          <div class="content has-text-justified">
+            <p>
+            •	<strong>DAG Representation of Solutions</strong>
+            Encode each solution as a Directed Acyclic Graph (DAG), where nodes are formulas and edges capture prerequisite relations. This provides a minimal, complete, and interpretable structure of the reasoning process. <br>
+            •	<strong>Ancestor Closure Scoring</strong>
+            Score = matched formulas + all their prerequisites. This ensures fair credit propagation along causal chains, avoiding both over- and under-crediting. <br>
+            •	<strong>Optimality Guarantee</strong>
+            We prove the optimality of the DAG representation and the corresponding scoring policy, ensuring no information loss and no redundant complexity.
+            </p>
+          </div>
+        <h2 class="title is-3">Evaluation Framework</h2>
+         <h2 class="title is-4">Rule-based Physics Formula Equivalence Matching</h2>
+          <div class="content has-text-justified">
+            <p>
+              <strong>[Stage 1] Constant Substitution.</strong> We substitute certain variables with their expressions. Variables, constants, and units are normalized into predefined form for consistency. <br>
+
+              <strong>[Stage 2] Solution Set Equivalence Check.</strong> For two equations with $N$ variables, one variable is randomly chosen as the target, the remaining $N-1$ are assigned random values, then and the target is solved to compare whether the solution sets are equivalent. This process is repeated for multiple iterations. Solution set equivalence serves as a proxy for equation equivalence.            </p>
+          </div>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/scoring_example.jpg" alt="SeePhys" width="80%"/>
+              <p> An example of our scoring pipeline. We developed a fully rule-based method to ensure consistent validation across diverse formulations without heuristic judgments.
+            </div>
+          </div>
+          <h2 class="title is-4">Scoring Pipeline</h2>
+          <div class="content has-text-justified">
+            <p>
+                <section style="max-width:900px; margin:40px auto; font-family:Arial, sans-serif;">
+                <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between;">
+    
+                  <!-- Step 1 -->
+                  <!-- <div style="flex:1; min-width:250px; border:1px solid #ccc; border-radius:8px; padding:8px; background:#f9fafc;">
+                    <h3 style="margin-top:0;">1. <strong>Formula Extraction & Normalization</strong></h3>
+                    <p>Extract mathematical expressions from the student solution and rewrite them into a standardized canonical form, discarding malformed or irrelevant fragments.</p>
+                  </div> -->
+                  
+                  <!-- Step 2 -->
+                  <!-- <div style="flex:1; min-width:250px; border:1px solid #ccc; border-radius:8px; padding:8px; background:#f9fafc;">
+                    <h3 style="margin-top:0;">2. <strong>Formula Matching</strong></h3>
+                    <p>Compare normalized student formulas with the reference DAG to identify matched formulas in the solution graph.</p>
+                  </div> -->
+                  
+                  <!-- Step 3 -->
+                  <!-- <div style="flex:1; min-width:250px; border:1px solid #ccc; border-radius:8px; padding:8px; background:#f9fafc;">
+                    <h3 style="margin-top:0;">3. <strong>Scoring</strong></h3>
+                    <p>Apply the <em>Ancestor Closure Scoring Policy</em>: credit matched formulas plus all their prerequisites in the DAG.</p>
+                  </div> -->
+
+  </div>
+</section>
+            </p>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+	
+<!-- DATASET SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <!-- <h1 class="title is-1 mathvista"><img src="static/images/mathverse.png" style="width:1.0em;vertical-align: middle" alt="Logo"/>MathVista Dataset</h1> -->
+  <h1 class="title is-1 mathvista">
+    <img src="static/icon/prism.png" style="width:1em;vertical-align: middle" alt="Logo"/>
+    <span class="mathvista" style="vertical-align: middle">PRISM-Physics Dataset</span>
+  </h1>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-full-width has-text-centered"> -->
+        <div class="column is-four-fifths">
+        <h2 class="title is-3">Data Collection and Preprocessing</h2>
+        <div class="box m-5">
+          <div class="content has-text-centered">
+            <img src="static/images/clean_data.jpg" alt="SeePhys" width="100%"/>
+            <p> Overview of <b>Three-Step Rewriting Pipeline.</b>. 
+          </div>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+              <strong>Three-Step Rewriting Pipeline.</strong> To guarantee both internal consistency and external evaluability, every sample in the dataset is processed through a structured three-stage rewriting pipeline. Each stage focuses on eliminating ambiguity and enforcing standardization, while preserving the fidelity of the original content. <br>
+              <strong>Verification and Quality Control.</strong> At each stage, an LLM-based module verifies formatting, clarity, and dependency rules; failures trigger corrective feedback and regeneration. <br>
+              <strong>Fine-Grained Enhancements.</strong> Beyond the main pipeline, we applied several refinements: enforcing significant-figure rules, explicitly defining all constants and variables, and unifying answer formatting. <br>
+              <p>
+           
+            You can download the dataset on <a href="" target="_blank">Hugging Face Dataset</a>.
+          </p>
+          <!-- <div id="results-c`arousel" class="carousel results-carousel">
+          
+        </div> -->
+        </div>
+      </div> 
+      </div>
+        
+
+    <span style="margin:25pt">
+    </span>
+
+    <!-- <div class="columns is-centered m-6"> -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+        <h2 class="title is-3">Dataset statistics</h2>
+        <div class="content has-text-justified">
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/statistics.png" alt="PRISM-Physics"  width="20%"/>
+              <img src="static/images/sankey.png" alt="PRISM-Physics"  width="70%"/>
+              <p> The statistics of <img src="static/icon/prism.png" style="width:2.0em;vertical-align: middle" alt="Logo"/>
+                <span class="mathvista">PRISM-Physics</span> dataset. </p>
+            </div>
+          </div>
+        <p> 
+          <img src="static/icon/prism.png" style="width:2.0em;vertical-align: middle" alt="Logo"/>
+        </p>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+
+    
+
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+  <h1 class="title is-1 mathvista" id="leaderboard">
+    <img src="static/icon/prism.png" style="width:1em;vertical-align: middle" alt="Logo"/>
+    <span class="mathvista" style="vertical-align: middle">Experiment Results</span>
+  </h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <h2 class="title is-3">Results on Existing Foundation Models</h2>
+        <!-- <p>One example for each reasoning skill required in <span class="mathvista">MathVista</span></p> -->
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="box m-5">
+          <div class="content has-text-centered">
+            <img src="static/images/.png" alt="" width="100%"/>
+            <p></p>
+          </div>
+          </div>
+          <div class="box m-5">
+          <div class="content has-text-centered">
+            <img src="static/images/.png" alt="" width="100%"/>
+            <p></p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <h2 class="title is-3">Error Analysis Examples</h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/" alt="" width="100%"/>
+              <p>Examples of primary error patterns.</p>
+            </div>
+          </div>
+ 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIBTEX SECTION -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3 has-text-centered">BibTeX</h2>
+    <pre><code>
+        @article{
+          
+        }
+    </code></pre>
+  </div>
+</section>
+
+
+<!-- COLLABORATORS SECTION -->
+<section>
+  <div class="section" id="org-banners" style="display:flex">
+   <a href="https://www.sysu.edu.en/" target="_blank" rel="external">
+        <div id="logo"><img src="static/images/" style="width:9.0em;vertical-align: middle"></div>
+    </a>
+    &emsp;&emsp;
+    <a href="https://ethz.ch/en.html" target="_blank" rel="external">
+        <div id="logo"><img src="static/images/" style="width:18.0em;vertical-align: middle"></div>
+    </a>     
+    &emsp;&emsp;
+    <a href="https://www.noahlab.com.hk/" target="_blank" rel="external">
+      <div id="logo"><img src="static/images/" style="width:5.0em;vertical-align: middle"></div>
+    </a>   
+    &emsp;&emsp;
+    <a href="https://hku.hk/" target="_blank" rel="external">
+        <div id="logo"><img src="static/images/" style="width:16.0em;vertical-align: middle"></div>
+    </a>  
+    <a href="https://hku.hk/" target="_blank" rel="external">
+        <div id="logo"><img src="static/images/" style="width:16.0em;vertical-align: middle"></div>
+    </a>  
+  </div>
+</section>
+
+
+<!-- FOOTER SECTION -->
+<footer class="footer">
+  <!-- <div class="container"> -->
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is adapted from <a href="https://fveler.github.io/">FVELer</a>, <a href="https://mathverse-cuhk.github.io/">MathVerse</a>, <a href="https://mathvista.github.io/">MathVista</a>, and <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</footer>
+
+</body>
+</html>
