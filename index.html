@@ -106,7 +106,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href=""
+                <a href="https://arxiv.org/abs/2510.03185"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -215,20 +215,6 @@
 </div>
 </section>
 
-
-
-<!-- leaderboard SECTION -->
-<section class="hero is-light is-small">
-  <div class="hero-body has-text-centered">
-
-  <h1 class="title is-1 mathvista" id="leaderboard">
-    <img src="static/icon/prism.png" style="width:1em;vertical-align: middle" alt="Logo"/>
-    <span class="mathvista" style="vertical-align: middle">Leaderboard on PRISM-Physics</span>
-  </h1>
-  </div>
-</section>
-
-
 <section class="section">
   <div class="container">
     <div class="columns is-centered has-text-centered">
@@ -236,9 +222,8 @@
         <div class="column is-four-fifths">
         <div class="box m-5">
           <div class="content has-text-centered">
-            <img src="static/images/leaderboard.png" alt="SeePhys" width="80%"/>
-            <p> Step-level Accuracy, Final-Answer Accuracy and response time across difficulty levels (Easy, Medium,
-                Hard, and Avg.) for evaluated models.
+            <img src="static/images/overall.jpg" alt="Prism-Physics" width="80%"/>
+            <p> Step-level Accuracy, Final-Answer Accuracy and response time for evaluated models.
           </div>
         </div>
       </div> 
@@ -266,8 +251,8 @@
         <h2 class="title is-3">Overview</h2>
           <div class="box m-5">
             <div class="content has-text-centered">
-              <img src="static/images/overall_dag_large.jpg" alt="SeePhys" width="100%"/>
-              <p> Overview of <b>PRISM-Physics</b>. <em>Left:</em> Statistics of <b>PRISM-Physics</b> hierarchical topics and difficulty level.<br> <em>Right:</em> A data example with the proposed DAG structure.
+              <img src="static/images/dag.jpg" alt="Prism-Physics" width="100%"/>
+              <p> A data example with the proposed DAG structure.
             </div>
           </div>
           <div class="content has-text-justified">
@@ -290,16 +275,22 @@
           </div>
           <div class="box m-5">
             <div class="content has-text-centered">
-              <img src="static/images/scoring_example.jpg" alt="SeePhys" width="80%"/>
-              <p> An example of our scoring pipeline. We developed a fully rule-based method to ensure consistent validation across diverse formulations without heuristic judgments.
+              <img src="static/images/scoring_example.jpg" alt="Prism-Physics" width="80%"/>
+              <p> An example of our scoring pipeline. A) Formula matching aligns student and reference formulas. B) Back-propagation grading highlights correctly credited formulas along the dependency DAG. C) The final score is computed as the sum of credited points, yielding <em>90/100</em> in this case.
             </div>
           </div>
           <h2 class="title is-4">Scoring Pipeline</h2>
           <div class="content has-text-justified">
             <p>
-                <section style="max-width:900px; margin:40px auto; font-family:Arial, sans-serif;">
-                <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between;">
-    
+              <strong>Formula Extraction and Normalization.</strong> <br>
+                •	Given a student's solution, all mathematical expressions are first extracted and rewritten into our dataset's standardized canonical form, discarding invalid expressions such as syntactically malformed formulas or irrelevant numerical fragments.<br>
+
+              <strong>Formula Matching.</strong>  <br>
+              •	Each standardized student formula is compared against the reference DAG of the solution according to Section~\ref{sec:matching}, which outputs a set of matched formulas in the DAG.<br>
+
+              <strong>Scoring.</strong> <br>
+              •	Finally, we score the student solution according to the Ancestor Closure Scoring Policy in Section~\ref{sec:ancestor} with the DAG and the set of matched formulas.
+
                   <!-- Step 1 -->
                   <!-- <div style="flex:1; min-width:250px; border:1px solid #ccc; border-radius:8px; padding:8px; background:#f9fafc;">
                     <h3 style="margin-top:0;">1. <strong>Formula Extraction & Normalization</strong></h3>
@@ -343,12 +334,11 @@
 <section class="section">
   <div class="container">
     <div class="columns is-centered has-text-centered">
-      <!-- <div class="column is-full-width has-text-centered"> -->
-        <div class="column is-four-fifths">
+      <div class="column is-four-fifths">
         <h2 class="title is-3">Data Collection and Preprocessing</h2>
         <div class="box m-5">
           <div class="content has-text-centered">
-            <img src="static/images/clean_data.jpg" alt="SeePhys" width="100%"/>
+            <img src="static/images/clean_data.jpg" alt="Prism-Physics" width="100%"/>
             <p> Overview of <b>Three-Step Rewriting Pipeline.</b>. 
           </div>
         </div>
@@ -357,16 +347,12 @@
               <strong>Three-Step Rewriting Pipeline.</strong> To guarantee both internal consistency and external evaluability, every sample in the dataset is processed through a structured three-stage rewriting pipeline. Each stage focuses on eliminating ambiguity and enforcing standardization, while preserving the fidelity of the original content. <br>
               <strong>Verification and Quality Control.</strong> At each stage, an LLM-based module verifies formatting, clarity, and dependency rules; failures trigger corrective feedback and regeneration. <br>
               <strong>Fine-Grained Enhancements.</strong> Beyond the main pipeline, we applied several refinements: enforcing significant-figure rules, explicitly defining all constants and variables, and unifying answer formatting. <br>
-              <p>
-           
+              <br>
             You can download the dataset on <a href="" target="_blank">Hugging Face Dataset</a>.
           </p>
-          <!-- <div id="results-c`arousel" class="carousel results-carousel">
-          
-        </div> -->
         </div>
       </div> 
-      </div>
+    </div>
         
 
     <span style="margin:25pt">
@@ -378,16 +364,25 @@
         <h2 class="title is-3">Dataset statistics</h2>
         <div class="content has-text-justified">
           <div class="box m-5">
-            <div class="content has-text-centered">
-              <img src="static/images/statistics.png" alt="PRISM-Physics"  width="20%"/>
-              <img src="static/images/sankey.png" alt="PRISM-Physics"  width="70%"/>
-              <p> The statistics of <img src="static/icon/prism.png" style="width:2.0em;vertical-align: middle" alt="Logo"/>
-                <span class="mathvista">PRISM-Physics</span> dataset. </p>
+            <div class="content has-text-left">
+              <p>
+                <img src="static/images/pie.jpg" alt="Logo" 
+                    style="float:left; margin:0 1.5em 1em 0; width:16em;">
+                <strong>Difficulty Annotation.</strong>  <br>
+                Each problem is assigned a composite difficulty label that integrates LLM-based ratings of conceptual depth and computational burden with an entropy-based DAG complexity measure. The three components are combined into a unified score, which is mapped to <em>Easy</em>, <em>Medium</em>, <em>Hard</em>, capturing both the content difficulty and the reasoning complexity of the solution.  <br>
+                <strong>Physics Domain Categorization.</strong>  <br>
+                    Each problem is categorized into one of seven key physics domains: <br>
+                    (1) Mechanics, 
+                    (2) Electromagnetism, 
+                    (3) Optics, 
+                    (4) Atomic, Nuclear, and Particle Physics,   <br>
+                    (5) Thermodynamics and Statistical Physics, 
+                    (6) Quantum Mechanics,
+                    (7) Solid State Physics and Miscellaneous Topics.
+              </p>
             </div>
           </div>
-        <p> 
-          <img src="static/icon/prism.png" style="width:2.0em;vertical-align: middle" alt="Logo"/>
-        </p>
+
         </div>
       </div>
     </div>
@@ -408,53 +403,178 @@
 
 <section class="section">
   <div class="container">
-
-    <div class="columns is-centered m-6">
-      <div class="column is-full has-text-centered content">
-        <h2 class="title is-3">Results on Existing Foundation Models</h2>
-        <!-- <p>One example for each reasoning skill required in <span class="mathvista">MathVista</span></p> -->
-        <div id="results-carousel" class="carousel results-carousel">
-          <div class="box m-5">
-          <div class="content has-text-centered">
-            <img src="static/images/.png" alt="" width="100%"/>
-            <p></p>
-          </div>
-          </div>
-          <div class="box m-5">
-          <div class="content has-text-centered">
-            <img src="static/images/.png" alt="" width="100%"/>
-            <p></p>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="columns is-centered m-6">
-      <div class="column is-full has-text-centered content">
-        <h2 class="title is-3">Error Analysis Examples</h2>
-        <div id="results-carousel" class="carousel results-carousel">
-          <div class="box m-5">
-            <div class="content has-text-centered">
-              <img src="static/images/" alt="" width="100%"/>
-              <p>Examples of primary error patterns.</p>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+          <h2 class="title is-3">Main Results </h2>
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <p>Table 1. Step-level Accuracy and Final-Answer Accuracy across difficulty levels (Easy, Medium, Hard, and Avg.) for evaluated models.</p>
+                <img src="static/images/leaderboard.png" alt="" width="100%"/>
+              </div>
             </div>
           </div>
- 
+          <h2 class="title is-4">Step-level vs. Answer-level Evaluation.</h2>
+
+          <div class="content has-text-justified">  
+            <p>
+              Table 1 reports step-level and final-answer accuracy across difficulty levels. As problem difficulty rises, performance declines and response time increases, reflecting LLMs' sensitivity to longer reasoning chains, more demanding modeling, and higher computational effort. Final-answer and step-level evaluations diverge sharply with problem difficulty: final-answer accuracy drops by over 40% from easy to medium and below 10% on hard problems, while step-level scoring reveals that models still earn partial credit by applying key principles or deriving valid intermediate equations before failing at later stages.<br>
+
+              These results demonstrate that final-answer scoring alone severely underestimates reasoning ability, whereas step-level evaluation provides a more faithful measure of process competence under complex tasks. Moreover, step-level signals open promising avenues for training and data curation: If evaluation relies solely on final answers, rewards on difficult problems become extremely sparse. Instead, step-level scoring provides <strong>rich intermediate reward signals</strong>, offering valuable guidance for reinforcement learning and a principled basis for constructing higher-quality training data.
+            </p>
+          </div>
+          <div id="results-carousel" class="carousel results-carousel">
+              <h2 class="title is-4">Physics Domain Category Analysis.</h2>
+
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/category_acc.jpg" alt="" width="100%"/>
+                <p>Step-level and final-answer accuracy across Physics Domain Categories and Difficulty Levels.</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="content has-text-justified">  
+            <p>
+=              We analyze LLM performance across physics domains and difficulty levels, as shown in Figure. 
+              Models exhibit varying accuracy across different types, with the highest performance observed in Thermodynamics and Statistical Physics and the lowest in Quantum Mechanics. Step-level evaluation further exposes weaknesses in reasoning coherence, and accuracy consistently drops from Easy to Hard problems across all domains.          </p>
+          </div>
+        </div>
+      </div>
+  </section>
+    
+
+    
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Modality and Reasoning-Level Comparisons</h2>
+          <h2 class="title is-4">Text Models vs. Multimodal Models</h2>
+            <div class="content has-text-justified">  
+              <p>
+                The effect of multimodal input varies across model families. In general, adding images provides stronger gains at the step level than at the final-answer level, highlighting its role in supporting intermediate reasoning. However, for smaller or weaker models, multimodal input can even be detrimental, as diagrams in physics problems often serve a presentational rather than informational role, with the critical content already conveyed in text.        </div>
+            <div id="results-carousel" class="carousel results-carousel">
+          <h2 class="title is-4">Across Different Reasoning Level.</h2>
+          <div class="content has-text-justified">
+
+          
+
+          <div class="box m-5">
+            <div class="content has-text-left">
+              <p>
+                <img src="static/images/reasoning.jpg" alt="Logo" 
+                    style="float:left; margin:0 1.5em 1em 0; width:28em;">
+                As shown in Figure 4., we observe that reasoning-oriented models exhibit consistently higher accuracy than chat-oriented models, but this improvement consistently comes with substantially longer response times.
+                We further evaluate GPT-5 and GPT-5-mini for three reasoning modes (<em>low</em>, <em>medium</em>, <em>high</em>). Results indicate a consistent improvement in accuracy with increasing reasoning effort. However, for GPT-5, the average latency of the <em>medium</em> mode is 83.38% higher than the <em>low</em> mode, while the <em>high</em> mode is 268.18% higher. GPT-5-mini shows the same pattern. These results confirm that deeper reasoning consistently improves accuracy while incurring proportional increases in computational cost. Notably, while o4-mini was previously claimed to be a good reasoning model, its performance here is relatively poor; one possible explanation is that, as a distilled model, it suffers from limited generalization and thus struggles with complex reasoning tasks beyond its training distribution.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Error Analysis</h2>
+            <div id="results-carousel" class="carousel results-carousel">
+
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/errors.jpg" alt="" width="60%"/>
+                <p>Figure 5: Distribution of primary error types across models.</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="content has-text-justified">  
+            <p>
+             We perform error analysis on the first incorrect step detected in each solution as shown in Figure 5, using a unified taxonomy that integrates process-level physics reasoning errors with formula-level derivation errors.  
+            The classification covers seven categories:  
+            (1) Diagram Analysis Error (DAE),  
+            (2) Physics Theorem Application Error (PTAE),  
+            (3) Modeling and Process Understanding Error (MPUE),  
+            (4) Condition or Assumption Error (CAE),
+            (5) Variable Relationship Error (VRE),  
+            (6) Derivation and Computation Error (DCE), and  
+            (7) Unit Dimension Error (UDE).<br>
+
+            The dominant error types across models are Condition/Assumption Errors (CAE), which arise when models set up inconsistent or incorrect physical assumptions; Derivation & Computation Errors (DCE), which occur when models make mistakes in algebraic manipulation or calculation; and Modeling & Process Understanding Errors (MPUE), which reflect failures in mapping the problem into the correct physical model or reasoning process. This indicates that LLMs often fail both in establishing consistent physical conditions and in executing algebraic reasoning.          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+    <section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Evaluation Framework Analysis</h2>
+          <h2 class="title is-4">Annotation Setup.</h2>
+            <div class="content has-text-justified">  
+              <p>
+              We randomly sampled 70 problems (10 from each domain) along with their corresponding DeepSeek-V3 (text-only) solutions. Each problem–solution pair was independently evaluated by two human experts to reduce variance, with annotators including an IPhO Gold Medalist and Top-Tier Physics PhD. 
+                In cases where the two experts' scores differed substantially, a third annotator was invited to adjudicate and determine the final score.          
+            </div>
+            <div id="results-carousel" class="carousel results-carousel">
+            <h2 class="title is-4">Results.</h2>
+            <div class="content has-text-justified">  
+                <p>
+                We quantified the agreement between framework-generated scores and human annotations using Kendall's &tau;<sub>b</sub> correlation coefficient, along with statistical significance testing via both asymptotic and permutation-based p-values. Higher $\tau_b$ values indicate stronger concordance, with significance levels verifying the robustness of the observed correlations.            </div>
+            <div id="results-carousel" class="carousel results-carousel">
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <p>Table 2: Comparison of annotation alignment.</p>
+
+                <img src="static/images/framework_analysis.png" alt="" width="50%"/>
+
+              </div>
+            </div>
+      
+            <div class="content has-text-justified">  
+                <p>
+                  Table 2 demonstrates the clear superiority of PAPS-DAG.
+                  which achieves the highest &tau;<sub>b</sub> and lowest $p$-values. 
+                  <em>LLM-as-Judge</em> is purely outcome-based, assigning only binary 0/1 scores, 
+                  while <em>PSAS-S</em>, though process-based, evaluates steps independently 
+                  without modeling causal dependencies. Both baselines are LLM-based, 
+                  whereas our non-LLM PAPS-DAG explicitly accounts for causality across steps, 
+                  leading to stronger alignment with human judgments. We analyzed failure cases from our evaluator and two baselines to understand strengths and limitations.             
+                </p>
+            </div>
+            <div id="results-carousel" class="carousel results-carousel">
+
+          </div>
+  
+      </div>
+    </div>
+  </section>
+
+
+
+
+
 
 <!-- BIBTEX SECTION -->
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title is-3 has-text-centered">BibTeX</h2>
     <pre><code>
-        @article{
-          
-        }
+    @article{huang2024physics,
+      title={PRISM-Physics: Causal DAG-Based Process Evaluation for Physics Reasoning},
+      author={Wanjia Zhao, Qinwei Ma, Jingzhe Shi, Shirley Wu, Jiaqi Han, Yijia Xiao, Si-Yuan Chen, Xiao Luo, Ludwig Schmidt, James Zou},
+      journal={arXiv preprint arXiv:2510.03185},
+      year={2025}
+    }
     </code></pre>
   </div>
 </section>
@@ -463,23 +583,24 @@
 <!-- COLLABORATORS SECTION -->
 <section>
   <div class="section" id="org-banners" style="display:flex">
-   <a href="https://www.sysu.edu.en/" target="_blank" rel="external">
-        <div id="logo"><img src="static/images/" style="width:9.0em;vertical-align: middle"></div>
+   <a href="https://www.stanford.edu/" target="_blank" rel="external">
+        <div id="logo"><img src="static/logos/stanford.png" style="width:9.0em;vertical-align: middle"></div>
     </a>
     &emsp;&emsp;
-    <a href="https://ethz.ch/en.html" target="_blank" rel="external">
-        <div id="logo"><img src="static/images/" style="width:18.0em;vertical-align: middle"></div>
+    <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="external">
+        <div id="logo"><img src="static/logos/Tsinghua.png" style="width:11.0em;vertical-align: middle"></div>
     </a>     
     &emsp;&emsp;
-    <a href="https://www.noahlab.com.hk/" target="_blank" rel="external">
-      <div id="logo"><img src="static/images/" style="width:5.0em;vertical-align: middle"></div>
+    <a href="https://www.ucla.edu/" target="_blank" rel="external">
+      <div id="logo"><img src="static/logos/ucla.png" style="width:7.0em;vertical-align: middle"></div>
     </a>   
     &emsp;&emsp;
-    <a href="https://hku.hk/" target="_blank" rel="external">
-        <div id="logo"><img src="static/images/" style="width:16.0em;vertical-align: middle"></div>
+    <a href="https://www.harvard.edu/" target="_blank" rel="external">
+        <div id="logo"><img src="static/logos/harvard.png" style="width:10.0em;vertical-align: middle"></div>
     </a>  
-    <a href="https://hku.hk/" target="_blank" rel="external">
-        <div id="logo"><img src="static/images/" style="width:16.0em;vertical-align: middle"></div>
+    &emsp;&emsp;
+    <a href="https://www.wisc.edu/" target="_blank" rel="external">
+        <div id="logo"><img src="static/logos/wisc.png" style="width:10.0em;vertical-align: middle"></div>
     </a>  
   </div>
 </section>
