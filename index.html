@@ -75,6 +75,8 @@
 </nav>
 
 
+
+
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
@@ -218,21 +220,40 @@
 
 <section class="section">
   <div class="container" style="margin-bottom: 2vh;">
-    <!-- Abstract. -->
+    <!-- Abstract -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Introduction</h2>
+
+        <!-- Intro video -->
+        <div class="video-container" style="margin-top: 2em;">
+          <video controls autoplay muted loop width="80%" style="border-radius: 10px; box-shadow: 0 0 12px rgba(0,0,0,0.2);">
+            <source src="PRISM-Physics.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- <p class="has-text-grey is-size-6" style="margin-top: 0.5em;">
+            <em>Demo video: PRISM-Physics DAG-based evaluation overview</em>
+          </p> -->
+        </div>
+        <!--/ Intro video -->
+
         <div class="content has-text-justified">
           <p>
-            We present <span class="mathvista">PRISM-Physics</span>, a process-level evaluation framework and benchmark for complex physics reasoning problems. Solutions are represented as directed acyclic graphs (DAGs) of formulas, explicitly encoding causal dependencies among intermediate steps to enable fine-grained, interpretable, and theoretically grounded scoring. 
-            We prove the optimality of the DAG representation and the corresponding scoring policy. Combining with a fully rule-based method for symbolic formula equivalence matching that we developed, we ensure consistent validation across diverse formulations without heuristic judgments. Results show that our evaluation framework is more aligned with human experts' scoring. 
-           Experiments on state-of-the-art LLMs reveal persistent reasoning failures in physics, while step-level scoring offers both diagnostic insight and rich signals for later training. By combining structural rigor, theoretical guarantees, and symbolic validation, \dataset provides a principled foundation for advancing process-level evaluation and guiding the development of models with deeper scientific reasoning capabilities.
+            We present <span class="mathvista">PRISM-Physics</span>, a process-level evaluation framework and benchmark for complex physics reasoning problems.
+            Solutions are represented as directed acyclic graphs (DAGs) of formulas, explicitly encoding causal dependencies among intermediate steps to enable fine-grained, interpretable, and theoretically grounded scoring. 
+            We prove the optimality of the DAG representation and the corresponding scoring policy. Combining with a fully rule-based method for symbolic formula equivalence matching that we developed, we ensure consistent validation across diverse formulations without heuristic judgments.
+            Results show that our evaluation framework is more aligned with human experts' scoring.
+            Experiments on state-of-the-art LLMs reveal persistent reasoning failures in physics, while step-level scoring offers both diagnostic insight and rich signals for later training.
+            By combining structural rigor, theoretical guarantees, and symbolic validation, <span class="mathvista">PRISM-Physics</span> provides a principled foundation for advancing process-level evaluation and guiding the development of models with deeper scientific reasoning capabilities.
           </p>          
         </div>
+
+        
+
       </div>
     </div>
-    <!--/ Abstract. -->
-</div>
+    <!--/ Abstract -->
+  </div>
 </section>
 
 <section class="section">
@@ -256,7 +277,7 @@
 <section class="hero is-light is-small">
   <div class="hero-body has-text-centered">
 
-  <h1 class="title is-1 mathvista" id="leaderboard">
+  <h1 class="title is-1 mathvista" id="">
     <img src="static/icon/prism.png" style="width:1em;vertical-align: middle" alt="Logo"/>
     <span class="mathvista" style="vertical-align: middle">PRISM-DAG</span>
   </h1>
@@ -483,7 +504,7 @@
           <div class="box m-5">
             <div class="content has-text-left">
               <p>
-                <img src="static/images/reasoning.jpg" alt="Logo" 
+                <img src="static/images/reasoning.png" alt="Logo" 
                     style="float:left; margin:0 1.5em 1em 0; width:28em;">
                 As shown in Figure 4., we observe that reasoning-oriented models exhibit consistently higher accuracy than chat-oriented models, but this improvement consistently comes with substantially longer response times.
                 We further evaluate GPT-5 and GPT-5-mini for three reasoning modes (<em>low</em>, <em>medium</em>, <em>high</em>). Results indicate a consistent improvement in accuracy with increasing reasoning effort. However, for GPT-5, the average latency of the <em>medium</em> mode is 83.38% higher than the <em>low</em> mode, while the <em>high</em> mode is 268.18% higher. GPT-5-mini shows the same pattern. These results confirm that deeper reasoning consistently improves accuracy while incurring proportional increases in computational cost. Notably, while o4-mini was previously claimed to be a good reasoning model, its performance here is relatively poor; one possible explanation is that, as a distilled model, it suffers from limited generalization and thus struggles with complex reasoning tasks beyond its training distribution.
